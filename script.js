@@ -6,7 +6,14 @@ let inputHeader = document.getElementById("inputHeader");
 let inputText = document.getElementById("inputText");
 let list = document.getElementById("list");
 
+//for adding in localstorage
+let temp={};
+let targetsArray=[];
+let idNumber= targetsArray.length;
+let presentIdNumber;
+
 function addItem(){
+
     let div = document.createElement("div");
     let p1 = document.createElement("p");
     let p2 = document.createElement("p");
@@ -17,12 +24,30 @@ function addItem(){
     div.appendChild(p1);
     div.appendChild(p2);
     div.className = 'messageBox';
+    div.id=idNumber;
     div.draggable = true;
 
 	draggableBegginer.appendChild(div);
 
+    temp.title=inputHeader.value;
+    temp.description = inputText.value;
+    temp.currentList = "Targets";
+
+    targetsArray = JSON.parse(localStorage.getItem("targetsArray"));
+
+    targetsArray[idNumber]= temp;
+   
+    
+    localStorage.clear();
+    localStorage.setItem("targetsArray", JSON.stringify(targetsArray));
+
+
 	inputHeader.value = "";
     inputText.value="";
+    idNumber= idNumber+1;
+    // temp.title="";
+    // temp.description = "";
+    // temp.currentList = "";
 }
 
 addTicket.addEventListener("click", addItem);
@@ -35,7 +60,9 @@ document.addEventListener("drag", function(event) {
 document.addEventListener("dragstart", function(event) {
   // store a ref. on the dragged elem
   dragged = event.target;
+  presentIdNumber= event.target.id;
   // make it half transparent
+  
   event.target.style.opacity = .5;
 
   
@@ -74,9 +101,25 @@ document.addEventListener("drop", function(event) {
   // prevent default action (open as link for some elements)
   event.preventDefault();
   // move dragged elem to the selected drop target
+  targetsArray = JSON.parse(localStorage.getItem("targetsArray"));
+
   if (event.target.className == "dropzone") {
     event.target.style.background = "";
     dragged.parentNode.removeChild( dragged );
     event.target.appendChild( dragged );
+    
+    if(event.target.id==="Targets"){
+        targetsArray[presentIdNumber].currentList = "Targets";
+        
+    }
+    else if(event.target.id==="InProgress"){
+        targetsArray[presentIdNumber].currentList = "InProgress";
+        
+    }
+    else{
+        targetsArray[presentIdNumber].currentList = "Complete";
+        
+    }
+    localStorage.setItem("targetsArray", JSON.stringify(targetsArray));
   }
 }, false);

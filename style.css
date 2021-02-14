@@ -56,6 +56,10 @@
     margin-top: 1vh;
 }
 
+.messageBox:hover{
+    cursor: pointer;
+}
+
 .lists{
     display: flex;
     justify-content: space-around;
