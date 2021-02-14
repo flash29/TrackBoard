@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id ="inputElements">
+        <input type="text" id = "inputHeader" placeholder="Title">
+        <input type="text" id = "inputText" placeholder="Description">
+        <p class="addTicket" id ="addTicket">Add Ticket</p>
+    </div>
+    <div class="lists">
+        <div>
+            <div class="headings"> Targets</div>
+            <div class="dropzone">
+            
+                <div id="draggableBegginer">
+              <!-- <div id="list" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+              </div> -->
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <div class="headings">In progress</div>
+            <div class="dropzone"> 
+                <div id="draggableInProgress">
+                
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="headings">Completed</div>
+            <div class="dropzone">
+                <div id="draggableInProgress">
+             
+            </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- <div class="dropzone">
+        <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+          This div is draggable
+        </div>
+    </div>
+      <div class="dropzone"></div>
+      <div class="dropzone"></div>
+      <div class="dropzone"></div> -->
+
+      <script src="script.js"></script>
+</body>
+</html>

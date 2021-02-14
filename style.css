@@ -1,0 +1,70 @@
+#draggable {
+    width: 200px;
+    height: 20px;
+    text-align: center;
+    background: white;
+  }
+  
+  .dropzone {
+    width: 25vw;
+    height: 65vh;
+    background:white;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+
+#inputElements{
+    display: flex;
+    flex-direction: column;
+}
+/*input values for text and header*/
+#inputText{
+    height: 12vh;
+    width: 20vw;
+}
+
+#inputHeader{
+    height: 6vh;
+    width: 20vw;
+}
+
+#addTicket{
+    background-color: darkmagenta;
+    width: 8vw;
+    padding: 1vh;
+    color: antiquewhite;
+}
+
+#addTicket:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+
+
+.textList{
+    margin: 0;
+}
+.headerList{
+    font-weight: bold;
+    margin: 0;
+}
+
+.messageBox{
+    background-color:lightgrey;
+    padding: 1vw;
+    margin-top: 1vh;
+}
+
+.lists{
+    display: flex;
+    justify-content: space-around;
+}
+
+.headings{
+    border-style: solid;
+    border-color: darkmagenta transparent;
+    color: darkmagenta;
+    text-align: center;
+    padding: 0.4vh;;
+}
