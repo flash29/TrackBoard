@@ -2,6 +2,8 @@ let dragged;
 
 let addTicket = document.getElementById("addTicket");
 let draggableBegginer = document.getElementById("draggableBegginer");
+let draggableInProgress = document.getElementById("draggableInProgress");
+let draggableComplete = document.getElementById("draggableComplete");
 let inputHeader = document.getElementById("inputHeader");
 let inputText = document.getElementById("inputText");
 let list = document.getElementById("list");
@@ -11,6 +13,40 @@ let temp={};
 let targetsArray=[];
 let idNumber= targetsArray.length;
 let presentIdNumber;
+
+function loadLists(){
+    if (localStorage.length===1){
+        targetsArray = JSON.parse(localStorage.getItem("targetsArray"));
+        for (let i=0;i<targetsArray.length;i++){
+
+            let div = document.createElement("div");
+            let p1 = document.createElement("p");
+            let p2 = document.createElement("p");
+
+            p1.appendChild(document.createTextNode(targetsArray[i].title));
+            p1.className ='headerList'
+            p2.appendChild(document.createTextNode(targetsArray[i].description));
+            p2.className = 'textList';
+            div.appendChild(p1);
+            div.appendChild(p2);
+            div.className = 'messageBox';
+            div.id=i;//id number for that div
+            div.draggable = true;
+            if (targetsArray[i].currentList==="Targets"){
+                draggableBegginer.appendChild(div);
+            }
+            else if(targetsArray[i].currentList==="InProgress"){
+                draggableInProgress.appendChild(div);
+            }
+            else if(targetsArray[i].currentList==="Complete"){
+                draggableComplete.appendChild(div);
+            }
+            
+        }
+
+    }
+}
+window.addEventListener("load", loadLists);
 
 function addItem(){
 
@@ -24,6 +60,9 @@ function addItem(){
     div.appendChild(p1);
     div.appendChild(p2);
     div.className = 'messageBox';
+
+    targetsArray = JSON.parse(localStorage.getItem("targetsArray"));
+    idNumber= targetsArray.length;
     div.id=idNumber;
     div.draggable = true;
 
@@ -33,7 +72,7 @@ function addItem(){
     temp.description = inputText.value;
     temp.currentList = "Targets";
 
-    targetsArray = JSON.parse(localStorage.getItem("targetsArray"));
+    
 
     targetsArray[idNumber]= temp;
    
