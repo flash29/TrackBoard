@@ -48,6 +48,8 @@
 .headerList{
     font-weight: bold;
     margin: 0;
+    display: flex;
+    justify-content: space-between;
 }
 
 .messageBox{
@@ -71,4 +73,34 @@
     color: darkmagenta;
     text-align: center;
     padding: 0.4vh;;
+}
+
+#topRow{
+    display: flex;
+    justify-content: space-between;
+}
+
+.trackBoard{
+    width: 30vw;
+    height: 10vh;
+    font-size: 2rem;
+    
+    
+}
+
+.deleting{
+    color:darkmagenta;
+    display: inline;    
+    font-size: 2rem;
+    width: 25vw;
+    height: 10vh;
+    border: solid;
+    text-align: center;
+    padding-top: 2vh;
+}
+
+.deleting:hover{
+    cursor: pointer;
+    opacity: 0.8;
+
 }

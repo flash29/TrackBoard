@@ -8,11 +8,21 @@
     <title>Document</title>
 </head>
 <body>
-    <div id ="inputElements">
-        <input type="text" id = "inputHeader" placeholder="Title">
-        <input type="text" id = "inputText" placeholder="Description">
-        <p class="addTicket" id ="addTicket">Add Ticket</p>
+    <div id ="topRow">
+            <div id ="inputElements">
+                <input type="text" id = "inputHeader" placeholder="Title">
+                <input type="text" id = "inputText" placeholder="Description">
+                <p class="addTicket" id ="addTicket">Add Ticket</p>
+            </div>
+            <div class="trackBoard  headings">
+                TrackBoard
+            </div>
+            <div class="deleting">
+                Trash
+                <img class="trashIcon" src="./delete-black-18dp/2x/sharp_delete_black_18dp.png" />
+            </div>
     </div>
+
     <div class="lists">
         <div>
             <div class="headings"> Targets</div>
@@ -21,6 +31,15 @@
                 <div id="draggableBegginer">
               <!-- <div id="list" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
               </div> -->
+                    <!-- <div class="messageBox" draggable="true">
+                        <p class="headerList">
+                            Trialll 
+                            
+                                <img class="trashIcon" src="./delete-black-18dp/1x/sharp_delete_black_18dp.png" />
+                            
+                        </p>
+                        <p class="textList">Beep</p>
+                    </div> -->
                 </div>
             </div>
         </div>

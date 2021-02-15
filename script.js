@@ -7,6 +7,8 @@ let draggableComplete = document.getElementById("draggableComplete");
 let inputHeader = document.getElementById("inputHeader");
 let inputText = document.getElementById("inputText");
 let list = document.getElementById("list");
+let trashClicked = document.getElementById("trashIcon");
+
 
 //for adding in localstorage
 let temp={};
@@ -14,7 +16,10 @@ let targetsArray=[];
 let idNumber= targetsArray.length;
 let presentIdNumber;
 
+
+
 function loadLists(){
+    
     if (localStorage.length===1){
         targetsArray = JSON.parse(localStorage.getItem("targetsArray"));
         for (let i=0;i<targetsArray.length;i++){
@@ -22,9 +27,15 @@ function loadLists(){
             let div = document.createElement("div");
             let p1 = document.createElement("p");
             let p2 = document.createElement("p");
+            let img= document.createElement("img");
 
             p1.appendChild(document.createTextNode(targetsArray[i].title));
-            p1.className ='headerList'
+            p1.className ='headerList';
+
+            // img.src="./delete-black-18dp/1x/sharp_delete_black_18dp.png";
+            // img.className="trashIcon";
+            // img.id="trashIcon";
+            // p1.appendChild(img);
             p2.appendChild(document.createTextNode(targetsArray[i].description));
             p2.className = 'textList';
             div.appendChild(p1);
@@ -45,6 +56,11 @@ function loadLists(){
         }
 
     }
+    else{
+     localStorage.setItem("targetsArray", JSON.stringify(targetsArray));
+    }
+
+    
 }
 window.addEventListener("load", loadLists);
 
@@ -53,8 +69,17 @@ function addItem(){
     let div = document.createElement("div");
     let p1 = document.createElement("p");
     let p2 = document.createElement("p");
+    let img= document.createElement("img");
+
 	p1.appendChild(document.createTextNode(inputHeader.value));
-    p1.className ='headerList'
+    p1.className ='headerList';
+
+    // img.src="./delete-black-18dp/1x/sharp_delete_black_18dp.png";
+    // img.className="trashIcon";
+    // img.id="trashIcon";
+    // p1.appendChild(img);
+    
+
 	p2.appendChild(document.createTextNode(inputText.value));
     p2.className = 'textList';
     div.appendChild(p1);
@@ -161,4 +186,18 @@ document.addEventListener("drop", function(event) {
     }
     localStorage.setItem("targetsArray", JSON.stringify(targetsArray));
   }
+
+  if(event.target.className==="deleting"){
+    event.target.style.background = "";
+    dragged.parentNode.removeChild( dragged );
+    targetsArray.splice(presentIdNumber,1);
+    localStorage.setItem("targetsArray", JSON.stringify(targetsArray));
+  }
+
+
 }, false);
+
+function deleteNode(){
+
+    console.log("delete");
+}
